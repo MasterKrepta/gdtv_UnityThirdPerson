@@ -7,13 +7,18 @@ public class PlayerFreeLookState : PlayerBaseState
 {
     readonly int FREE_LOOK_SPEED =  Animator.StringToHash("FreeLookSpeed");
     const float ANIM_DAMP_TIME = 0.1f;
+
+    readonly int FREE_LOOK_BLEND_TREE = Animator.StringToHash("FreeLookBlendTree");
     
+
 
     public PlayerFreeLookState(PlayerStateMachine stateMachine) : base(stateMachine) {}
 
     public override void Enter()
     {
-
+        _stateMachine.InputReader.OnTargetEvent += OnTarget;
+        _stateMachine.Anim.Play(FREE_LOOK_BLEND_TREE);
+        
     }
     public override void Tick(float deltaTime)
     {
@@ -34,9 +39,18 @@ public class PlayerFreeLookState : PlayerBaseState
 
     public override void Exit()
     {
-
+        _stateMachine.InputReader.OnTargetEvent -= OnTarget;
 
     }
+
+    private void OnTarget()
+    {
+        if (_stateMachine.Targeter.SelectTarget() == false) { return; }
+
+        _stateMachine.SwitchState(new PlayerTargetingState(_stateMachine));
+    }
+
+    
 
     private void FaceMovementDirection(Vector3 movement, float deltaTime)
     {
