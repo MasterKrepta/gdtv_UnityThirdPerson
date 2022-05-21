@@ -24,7 +24,8 @@ public class PlayerFreeLookState : PlayerBaseState
     {
         Vector3 movement = CalculateMovement();
 
-        _stateMachine.Controller.Move(movement * deltaTime * _stateMachine.FreeLookMoveSpeed);
+        //_stateMachine.Controller.Move(movement * deltaTime * _stateMachine.FreeLookMoveSpeed);
+        Move(movement * _stateMachine.FreeLookMoveSpeed, deltaTime);
 
         if (_stateMachine.InputReader.MovementValue == Vector2.zero)
         {
