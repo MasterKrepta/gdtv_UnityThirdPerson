@@ -1370,6 +1370,19 @@ MonoBehaviour:
   <FreeLookMoveSpeed>k__BackingField: 6
   <TargetingMoveSpeed>k__BackingField: 5
   <RotationDamping>k__BackingField: 10
+  <Attacks>k__BackingField:
+  - <AnimName>k__BackingField: Attack1
+    <TransitionDur>k__BackingField: 0.1
+    <ComboStateIndex>k__BackingField: 1
+    <ComboAttackTime>k__BackingField: 0.6
+  - <AnimName>k__BackingField: Attack2
+    <TransitionDur>k__BackingField: 0.1
+    <ComboStateIndex>k__BackingField: 2
+    <ComboAttackTime>k__BackingField: 0.5
+  - <AnimName>k__BackingField: Attack3
+    <TransitionDur>k__BackingField: 0.2
+    <ComboStateIndex>k__BackingField: -1
+    <ComboAttackTime>k__BackingField: 0
 --- !u!95 &3295899781084230962
 Animator:
   serializedVersion: 4

@@ -6,6 +6,7 @@ using System;
 
 public class Targeter : MonoBehaviour
 {
+    private Camera MainCam;
 
     [SerializeField] CinemachineTargetGroup targetGroup;
 
@@ -15,7 +16,7 @@ public class Targeter : MonoBehaviour
 
     private void Start()
     {
-        
+        MainCam = Camera.main;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -39,7 +40,28 @@ public class Targeter : MonoBehaviour
     {
         if (targets.Count == 0) { return false; }
 
-        CurrentTarget = targets[0];
+        Target closestTarget = null;
+        float closestDistance = Mathf.Infinity;
+
+        foreach (Target target in targets)
+        {
+            Vector2 viewPos = MainCam.WorldToViewportPoint(target.transform.position);
+            if (viewPos.x > 1 || viewPos.x < 0 || viewPos.y > 1 || viewPos.y < 0)
+                continue;
+
+            Vector2 toCenter = viewPos - new Vector2(0.5f, 0.5f);
+            if (toCenter.sqrMagnitude < closestDistance)
+            {
+                closestTarget = target;
+                closestDistance = toCenter.sqrMagnitude;
+            }
+
+        
+        }
+
+        if (closestTarget == null) return false;
+
+        CurrentTarget = closestTarget;
         targetGroup.AddMember(CurrentTarget.transform, 1f, 2f);
         return true;
     }
