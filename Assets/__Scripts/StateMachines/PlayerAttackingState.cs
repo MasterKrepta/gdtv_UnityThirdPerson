@@ -7,7 +7,7 @@ public class PlayerAttackingState : PlayerBaseState
 {
     private Attack attack;
     float previousFrameTime;
-    
+    private bool appliedForce = false;
     public PlayerAttackingState(PlayerStateMachine stateMachine, int attackIndex) : base(stateMachine)
     {
 
@@ -17,6 +17,7 @@ public class PlayerAttackingState : PlayerBaseState
     public override void Enter()
     {
         _stateMachine.Anim.CrossFadeInFixedTime(attack.AnimName, attack.TransitionDur);
+        _stateMachine.WeaponDamage.SetAttack(attack.Damage);
     }
     public override void Tick(float deltaTime)
     {
@@ -25,8 +26,13 @@ public class PlayerAttackingState : PlayerBaseState
 
         float normalizedTime = GetNormalizedTime();
 
-        if (normalizedTime > previousFrameTime && normalizedTime < 1f)
+        if (normalizedTime >= previousFrameTime && normalizedTime < 1f)
         {
+            if (normalizedTime > attack.ForceTime)
+            {
+                TryApplyForce(normalizedTime);
+            }
+
             if (_stateMachine.InputReader.IsAttacking)
             {
                 TryComboAttack(normalizedTime);
@@ -35,7 +41,17 @@ public class PlayerAttackingState : PlayerBaseState
         else
         {
             //go to locomotion
+            if (_stateMachine.Targeter.CurrentTarget != null)
+            {
+                _stateMachine.SwitchState(new PlayerTargetingState(_stateMachine));
+            }
+            else
+            {
+                _stateMachine.SwitchState(new PlayerFreeLookState(_stateMachine));
+            }
         }
+
+      
 
         previousFrameTime = normalizedTime;
     }
@@ -77,6 +93,14 @@ public class PlayerAttackingState : PlayerBaseState
         (
             new PlayerAttackingState(_stateMachine, attack.ComboStateIndex)
         );
+    }
+
+    private void TryApplyForce(float normalizedTime)
+    {
+        if (appliedForce) return;
+
+        appliedForce = true;
+        _stateMachine.ForceReceiver.AddForce(_stateMachine.transform.forward * attack.Force);
     }
 
 }

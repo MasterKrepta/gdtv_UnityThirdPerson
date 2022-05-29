@@ -1167,6 +1167,52 @@ Transform:
   m_Father: {fileID: 6082651280349553195}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 73.85909, y: -20.5563, z: -18.143242}
+--- !u!1 &3716662198593470571
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3634813746609914388}
+  - component: {fileID: 7694581630215653143}
+  m_Layer: 0
+  m_Name: WeaponLogic
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &3634813746609914388
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3716662198593470571}
+  m_LocalRotation: {x: 0.0051744506, y: 0.040877584, z: -0.112992704, w: 0.9927411}
+  m_LocalPosition: {x: -0.341, y: 0.166, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6082651280349553195}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 1.118, y: 4.589, z: -12.942}
+--- !u!136 &7694581630215653143
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3716662198593470571}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.2
+  m_Height: 1.25
+  m_Direction: 0
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3859503116256768204
 GameObject:
   m_ObjectHideFlags: 0
@@ -1375,14 +1421,20 @@ MonoBehaviour:
     <TransitionDur>k__BackingField: 0.1
     <ComboStateIndex>k__BackingField: 1
     <ComboAttackTime>k__BackingField: 0.6
+    <ForceTime>k__BackingField: 0.35
+    <Force>k__BackingField: 15
   - <AnimName>k__BackingField: Attack2
     <TransitionDur>k__BackingField: 0.1
     <ComboStateIndex>k__BackingField: 2
     <ComboAttackTime>k__BackingField: 0.5
+    <ForceTime>k__BackingField: 0.35
+    <Force>k__BackingField: 15
   - <AnimName>k__BackingField: Attack3
     <TransitionDur>k__BackingField: 0.2
     <ComboStateIndex>k__BackingField: -1
     <ComboAttackTime>k__BackingField: 0
+    <ForceTime>k__BackingField: 0.35
+    <Force>k__BackingField: 20
 --- !u!95 &3295899781084230962
 Animator:
   serializedVersion: 4
@@ -1433,6 +1485,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4ba6754d929ad7428f7aeed345d4a0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  drag: 0.1
   controller: {fileID: 3351656932278081910}
 --- !u!1 &4816959660823692265
 GameObject:
@@ -2414,6 +2467,7 @@ Transform:
   - {fileID: 3697509633625930479}
   - {fileID: 4100060042789292317}
   - {fileID: 3641214485347401221}
+  - {fileID: 3634813746609914388}
   m_Father: {fileID: 7948599627878819915}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -12.559041, y: 5.3037033, z: 11.596521}
