@@ -106,7 +106,7 @@ NavMeshSettings:
   m_BuildSettings:
     serializedVersion: 2
     agentTypeID: 0
-    agentRadius: 0.5
+    agentRadius: 0.35
     agentHeight: 2
     agentSlope: 50
     agentClimb: 0.4
@@ -114,7 +114,7 @@ NavMeshSettings:
     maxJumpAcrossDistance: 0
     minRegionArea: 2
     manualCellSize: 0
-    cellSize: 0.16666667
+    cellSize: 0.11666667
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 23800000, guid: 3df7ce62452626a42ad9b6791929e9c4, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: aa61c05bfe26bda4b9928ffc83e1e77c, type: 2}
 --- !u!1 &26772829
 GameObject:
   m_ObjectHideFlags: 0
@@ -381,15 +381,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6672475852401647525, guid: c7355294d75b1b944aebfc1b3fa2f46e, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.1782835
+      value: 0.17828353
       objectReference: {fileID: 0}
     - target: {fileID: 6672475852401647525, guid: c7355294d75b1b944aebfc1b3fa2f46e, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.039144658
+      value: 0.039144624
       objectReference: {fileID: 0}
     - target: {fileID: 6672475852401647525, guid: c7355294d75b1b944aebfc1b3fa2f46e, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.007098278
+      value: -0.007098272
+      objectReference: {fileID: 0}
+    - target: {fileID: 7816221754603819486, guid: c7355294d75b1b944aebfc1b3fa2f46e, type: 3}
+      propertyPath: m_Lens.m_SensorSize.x
+      value: 1.3333334
       objectReference: {fileID: 0}
     - target: {fileID: 8472960925651260121, guid: c7355294d75b1b944aebfc1b3fa2f46e, type: 3}
       propertyPath: <WeaponDamage>k__BackingField
@@ -415,6 +419,14 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0.00000009404134
       objectReference: {fileID: 0}
+    - target: {fileID: 8617485269624972279, guid: c7355294d75b1b944aebfc1b3fa2f46e, type: 3}
+      propertyPath: m_Lens.m_SensorSize.x
+      value: 1.3333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 8617485270322133258, guid: c7355294d75b1b944aebfc1b3fa2f46e, type: 3}
+      propertyPath: m_Lens.m_SensorSize.x
+      value: 1.3333334
+      objectReference: {fileID: 0}
     - target: {fileID: 8617485270322133259, guid: c7355294d75b1b944aebfc1b3fa2f46e, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0.00000009401966
@@ -430,6 +442,10 @@ PrefabInstance:
     - target: {fileID: 8617485271518432000, guid: c7355294d75b1b944aebfc1b3fa2f46e, type: 3}
       propertyPath: m_LocalRotation.z
       value: -0.00000024060628
+      objectReference: {fileID: 0}
+    - target: {fileID: 8617485271518432003, guid: c7355294d75b1b944aebfc1b3fa2f46e, type: 3}
+      propertyPath: m_Lens.m_SensorSize.x
+      value: 1.3333334
       objectReference: {fileID: 0}
     - target: {fileID: 8986682810183160225, guid: c7355294d75b1b944aebfc1b3fa2f46e, type: 3}
       propertyPath: m_ChildCameras.Array.size
@@ -1480,6 +1496,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1393989859275192308, guid: dc405f6141ca61046830e4205b4bdc5e, type: 3}
+      propertyPath: <Agent>k__BackingField
+      value: 
+      objectReference: {fileID: 2104994302}
+    - target: {fileID: 1393989859275192308, guid: dc405f6141ca61046830e4205b4bdc5e, type: 3}
+      propertyPath: <MoveSpeed>k__BackingField
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6303087998441385426, guid: dc405f6141ca61046830e4205b4bdc5e, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1494,7 +1518,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6303087998441385426, guid: dc405f6141ca61046830e4205b4bdc5e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5.193189
+      value: 16.78
       objectReference: {fileID: 0}
     - target: {fileID: 6303087998441385426, guid: dc405f6141ca61046830e4205b4bdc5e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1699,4 +1723,9 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 6576417088127589719, guid: 30e5e64192447bb459d43217bf8f0a95, type: 3}
   m_PrefabInstance: {fileID: 2071030319}
+  m_PrefabAsset: {fileID: 0}
+--- !u!195 &2104994302 stripped
+NavMeshAgent:
+  m_CorrespondingSourceObject: {fileID: 5413736099648440311, guid: dc405f6141ca61046830e4205b4bdc5e, type: 3}
+  m_PrefabInstance: {fileID: 1948021074}
   m_PrefabAsset: {fileID: 0}
