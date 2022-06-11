@@ -27,7 +27,23 @@ using UnityEngine;
     {
         float dist = (_stateMachine.Player.transform.position - _stateMachine.transform.position).sqrMagnitude;
 
-        return dist <= _stateMachine.PlayerChasingRange;
+        return dist <= _stateMachine.ChasingRange * _stateMachine.ChasingRange;
+    }
+
+    protected bool IsInAttackRange()
+    {
+        float dist = (_stateMachine.Player.transform.position - _stateMachine.transform.position).sqrMagnitude;
+
+        return dist <= _stateMachine.AttackRange * _stateMachine.AttackRange;
+    }
+    protected void FacePlayer()
+    {
+        if (_stateMachine.Player == null) return;
+
+        Vector3 lookDir = (_stateMachine.Player.transform.position - _stateMachine.transform.position);
+        lookDir.y = 0;
+
+        _stateMachine.transform.rotation = Quaternion.LookRotation(lookDir);
     }
 
 }

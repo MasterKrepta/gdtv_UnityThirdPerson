@@ -30,8 +30,15 @@ public class EnemyChasingState : EnemyBaseState
             _stateMachine.SwitchState(new EnemyIdleState(_stateMachine));
             return;
         }
+        else if (IsInAttackRange())
+        {
+            _stateMachine.SwitchState(new EnemyAttackingState(_stateMachine));
+            return;
+        }
+
 
         MoveToPlayer(deltaTime);
+        FacePlayer();
 
         _stateMachine.Anim.SetFloat(SPEED_HASH, 1f, ANIM_DAMP_TIME, deltaTime);
 
