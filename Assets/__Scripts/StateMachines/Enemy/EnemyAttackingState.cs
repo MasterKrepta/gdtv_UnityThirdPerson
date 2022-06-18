@@ -13,16 +13,16 @@ public class EnemyAttackingState : EnemyBaseState
 
     public override void Enter()
     {
-        _stateMachine.Weapon.SetAttack(_stateMachine.AttackDmg);
+        _stateMachine.Weapon.SetAttack(_stateMachine.AttackDmg, _stateMachine.AttackKnockback);
         Debug.Log("IN ATTACK RANGE");
         _stateMachine.Anim.CrossFadeInFixedTime(ATTACK_HASH, CROSSFADE_DUR);
     }
     public override void Tick(float deltaTime)
     {
-        if (!IsInAttackRange())
+        if (GetNormalizedTime(_stateMachine.Anim) >= 1)
         {
             _stateMachine.SwitchState(new EnemyChasingState(_stateMachine));
-            return;
+            
         }
     }
 
