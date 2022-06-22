@@ -14,7 +14,7 @@ public class EnemyAttackingState : EnemyBaseState
     public override void Enter()
     {
         _stateMachine.Weapon.SetAttack(_stateMachine.AttackDmg, _stateMachine.AttackKnockback);
-        Debug.Log("IN ATTACK RANGE");
+        //Debug.Log("IN ATTACK RANGE");
         _stateMachine.Anim.CrossFadeInFixedTime(ATTACK_HASH, CROSSFADE_DUR);
     }
     public override void Tick(float deltaTime)
@@ -28,7 +28,7 @@ public class EnemyAttackingState : EnemyBaseState
 
     public override void Exit()
     {
-        Debug.Log("OUT OF ATTACK RANGE");
+        //Debug.Log("OUT OF ATTACK RANGE");
     }
 
     }

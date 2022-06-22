@@ -170,7 +170,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.5339233, y: 1}
+    m_SensorSize: {x: 2.4227407, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -372,11 +372,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9030240266279564943, guid: af64c3bf437cf2e499af18c3f0795b84, type: 3}
       propertyPath: m_Lens.m_SensorSize.x
-      value: 1.5339233
+      value: 2.4227407
       objectReference: {fileID: 0}
     - target: {fileID: 9030240266742393970, guid: af64c3bf437cf2e499af18c3f0795b84, type: 3}
       propertyPath: m_Lens.m_SensorSize.x
-      value: 1.5339233
+      value: 2.4227407
       objectReference: {fileID: 0}
     - target: {fileID: 9030240266742393971, guid: af64c3bf437cf2e499af18c3f0795b84, type: 3}
       propertyPath: m_LocalRotation.x
@@ -408,7 +408,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9030240267992757594, guid: af64c3bf437cf2e499af18c3f0795b84, type: 3}
       propertyPath: m_Lens.m_SensorSize.x
-      value: 1.5339233
+      value: 2.4227407
       objectReference: {fileID: 0}
     - target: {fileID: 9030240267992757595, guid: af64c3bf437cf2e499af18c3f0795b84, type: 3}
       propertyPath: m_RootOrder
@@ -468,7 +468,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9030240268211297915, guid: af64c3bf437cf2e499af18c3f0795b84, type: 3}
       propertyPath: m_Lens.m_SensorSize.x
-      value: 1.5339233
+      value: 2.4227407
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af64c3bf437cf2e499af18c3f0795b84, type: 3}
@@ -1172,9 +1172,45 @@ PrefabInstance:
       value: 2.6810417
       objectReference: {fileID: 0}
     - target: {fileID: 9174025466227068806, guid: 645796139de4e7747983fbcb0f2d31af, type: 3}
+      propertyPath: <Health>k__BackingField
+      value: 
+      objectReference: {fileID: 969494601}
+    - target: {fileID: 9174025466227068806, guid: 645796139de4e7747983fbcb0f2d31af, type: 3}
+      propertyPath: <WeaponDamage>k__BackingField
+      value: 
+      objectReference: {fileID: 178676946}
+    - target: {fileID: 9174025466227068806, guid: 645796139de4e7747983fbcb0f2d31af, type: 3}
       propertyPath: <ForceReceiver>k__BackingField
       value: 
       objectReference: {fileID: 8592349701499122350}
+    - target: {fileID: 9174025466227068806, guid: 645796139de4e7747983fbcb0f2d31af, type: 3}
+      propertyPath: <AttackKnockback>k__BackingField
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 9174025466227068806, guid: 645796139de4e7747983fbcb0f2d31af, type: 3}
+      propertyPath: <Attacks>k__BackingField.Array.data[0].<Damage>k__BackingField
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 9174025466227068806, guid: 645796139de4e7747983fbcb0f2d31af, type: 3}
+      propertyPath: <Attacks>k__BackingField.Array.data[1].<Damage>k__BackingField
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 9174025466227068806, guid: 645796139de4e7747983fbcb0f2d31af, type: 3}
+      propertyPath: <Attacks>k__BackingField.Array.data[2].<Damage>k__BackingField
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 9174025466227068806, guid: 645796139de4e7747983fbcb0f2d31af, type: 3}
+      propertyPath: <Attacks>k__BackingField.Array.data[0].<KnockBack>k__BackingField
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 9174025466227068806, guid: 645796139de4e7747983fbcb0f2d31af, type: 3}
+      propertyPath: <Attacks>k__BackingField.Array.data[1].<KnockBack>k__BackingField
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 9174025466227068806, guid: 645796139de4e7747983fbcb0f2d31af, type: 3}
+      propertyPath: <Attacks>k__BackingField.Array.data[2].<KnockBack>k__BackingField
+      value: 30
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 645796139de4e7747983fbcb0f2d31af, type: 3}
 --- !u!1 &5466103966813584877 stripped
@@ -1190,6 +1226,11 @@ Transform:
 --- !u!95 &2845094074937993325 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 3295899781084230962, guid: 645796139de4e7747983fbcb0f2d31af, type: 3}
+  m_PrefabInstance: {fileID: 776499987112484191}
+  m_PrefabAsset: {fileID: 0}
+--- !u!143 &2613728972793857065 stripped
+CharacterController:
+  m_CorrespondingSourceObject: {fileID: 3351656932278081910, guid: 645796139de4e7747983fbcb0f2d31af, type: 3}
   m_PrefabInstance: {fileID: 776499987112484191}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &8592349701499122350 stripped
@@ -1218,6 +1259,35 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 331477867947819694, guid: 645796139de4e7747983fbcb0f2d31af, type: 3}
   m_PrefabInstance: {fileID: 776499987112484191}
   m_PrefabAsset: {fileID: 0}
+--- !u!54 &178676947
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4130524389473393972}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &178676946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4130524389473393972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 154222d730568f54fb74742a03b42feb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myCollider: {fileID: 2613728972793857065}
 --- !u!114 &969494600
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1231,3 +1301,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapon: {fileID: 4130524389473393972}
+--- !u!114 &969494601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5466103966813584877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01bf99291bd801e41b9c96397dcca2e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100

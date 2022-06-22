@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,7 @@ public class Health : MonoBehaviour
 
     int health;
 
+    public event Action OnTakeDamage;
 
     private void Start()
     {
@@ -20,6 +22,9 @@ public class Health : MonoBehaviour
         if (health == 0) return;
 
         health = Mathf.Max(health - dmg, 0);
+
+        OnTakeDamage?.Invoke();
+
         print(this.gameObject.name + " Took damage: currently " + health.ToString());
 
     }

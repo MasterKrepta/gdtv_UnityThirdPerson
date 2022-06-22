@@ -29,7 +29,7 @@ public class ForceReceiver : MonoBehaviour
 
         impact = Vector3.SmoothDamp(impact, Vector3.zero, ref DampingVel, drag);
 
-        if(impact == Vector3.zero)
+        if(impact.sqrMagnitude < 0.2f * 0.2f)
         {
             if(Agent != null)
             {
@@ -41,7 +41,9 @@ public class ForceReceiver : MonoBehaviour
 
     public void AddForce(Vector3 force)
     {
+        print(this.name + " got knockedback");
         impact += force;
+
         if(Agent != null)
         {
             Agent.enabled = false;
