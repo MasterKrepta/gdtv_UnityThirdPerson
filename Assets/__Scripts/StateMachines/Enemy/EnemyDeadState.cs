@@ -10,7 +10,7 @@ public class EnemyDeadState : EnemyBaseState
 
     public override void Enter()
     {
-        //toggle ragdoll physics
+        _stateMachine.Ragdoll.ToggleRagdoll(true);
         _stateMachine.Weapon.gameObject.SetActive(false);
         GameObject.Destroy(_stateMachine.Target);
     }

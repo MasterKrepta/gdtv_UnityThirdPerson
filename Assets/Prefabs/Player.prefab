@@ -1355,7 +1355,8 @@ GameObject:
   - component: {fileID: 3295899781084230962}
   - component: {fileID: 3351656932278081910}
   - component: {fileID: 9077152489625006065}
-  m_Layer: 0
+  - component: {fileID: 4461299240740350139}
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1421,20 +1422,30 @@ MonoBehaviour:
     <TransitionDur>k__BackingField: 0.1
     <ComboStateIndex>k__BackingField: 1
     <ComboAttackTime>k__BackingField: 0.6
+    <KnockBack>k__BackingField: 0
     <ForceTime>k__BackingField: 0.35
     <Force>k__BackingField: 15
+    <Damage>k__BackingField: 0
   - <AnimName>k__BackingField: Attack2
     <TransitionDur>k__BackingField: 0.1
     <ComboStateIndex>k__BackingField: 2
     <ComboAttackTime>k__BackingField: 0.5
+    <KnockBack>k__BackingField: 0
     <ForceTime>k__BackingField: 0.35
     <Force>k__BackingField: 15
+    <Damage>k__BackingField: 0
   - <AnimName>k__BackingField: Attack3
     <TransitionDur>k__BackingField: 0.2
     <ComboStateIndex>k__BackingField: -1
     <ComboAttackTime>k__BackingField: 0
+    <KnockBack>k__BackingField: 0
     <ForceTime>k__BackingField: 0.35
     <Force>k__BackingField: 20
+    <Damage>k__BackingField: 0
+  <WeaponDamage>k__BackingField: {fileID: 0}
+  <Health>k__BackingField: {fileID: 0}
+  <Ragdoll>k__BackingField: {fileID: 4461299240740350139}
+  <AttackKnockback>k__BackingField: 0
 --- !u!95 &3295899781084230962
 Animator:
   serializedVersion: 4
@@ -1486,6 +1497,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drag: 0.1
+  controller: {fileID: 3351656932278081910}
+  Agent: {fileID: 0}
+--- !u!114 &4461299240740350139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4691956994736234674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0995699c088dd44c813030b90e2be59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 3295899781084230962}
   controller: {fileID: 3351656932278081910}
 --- !u!1 &4816959660823692265
 GameObject:

@@ -16,6 +16,7 @@ public class PlayerStateMachine : StateMachine
 
     [field: SerializeField] public WeaponDamage WeaponDamage { get; private set; }
     [field: SerializeField] public Health Health { get; private set; }
+    [field: SerializeField] public Ragdoll   Ragdoll { get; private set; }
     [field: SerializeField] public float AttackKnockback { get; private set; }
 
     public Transform MainCameraTransform { get; private set; }
