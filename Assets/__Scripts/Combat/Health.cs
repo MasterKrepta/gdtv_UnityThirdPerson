@@ -10,6 +10,11 @@ public class Health : MonoBehaviour
     int health;
 
     public event Action OnTakeDamage;
+    public event Action OnDie;
+
+    
+
+    
 
     private void Start()
     {
@@ -25,7 +30,9 @@ public class Health : MonoBehaviour
 
         OnTakeDamage?.Invoke();
 
-        print(this.gameObject.name + " Took damage: currently " + health.ToString());
+        if (health <= 0) OnDie?.Invoke();
+
+        //print(this.gameObject.name + " Took damage: currently " + health.ToString());
 
     }
 }

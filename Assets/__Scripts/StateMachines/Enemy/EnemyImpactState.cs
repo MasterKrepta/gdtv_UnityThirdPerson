@@ -23,6 +23,7 @@ public class EnemyImpactState : EnemyBaseState
 
         duration -= deltaTime;
 
+        
         if (duration <= 0)
         {
             _stateMachine.SwitchState(new EnemyIdleState(_stateMachine));

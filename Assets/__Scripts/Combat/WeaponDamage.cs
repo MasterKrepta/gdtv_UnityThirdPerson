@@ -37,6 +37,7 @@ public class WeaponDamage : MonoBehaviour
         {
             Vector3 dir = (other.transform.position - myCollider.transform.position).normalized;
             forceReceiver.AddForce(dir * knockback);
+            Debug.Log(other.name + " :: " + knockback);
         }
     }
 }

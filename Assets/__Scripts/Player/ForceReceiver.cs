@@ -41,7 +41,7 @@ public class ForceReceiver : MonoBehaviour
 
     public void AddForce(Vector3 force)
     {
-        print(this.name + " got knockedback");
+        print(this.name + " got knockedback " + force);
         impact += force;
 
         if(Agent != null)
