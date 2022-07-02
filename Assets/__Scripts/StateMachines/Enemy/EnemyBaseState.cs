@@ -25,6 +25,8 @@ using UnityEngine;
 
     protected bool IsInChaseRange()
     {
+
+        if (_stateMachine.Player.IsDead) { return false; }
         float dist = (_stateMachine.Player.transform.position - _stateMachine.transform.position).sqrMagnitude;
 
         return dist <= _stateMachine.ChasingRange * _stateMachine.ChasingRange;
@@ -32,6 +34,8 @@ using UnityEngine;
 
     protected bool IsInAttackRange()
     {
+
+        if (_stateMachine.Player.IsDead) { return false; }
         float dist = (_stateMachine.Player.transform.position - _stateMachine.transform.position).sqrMagnitude;
 
         return dist <= _stateMachine.AttackRange * _stateMachine.AttackRange;

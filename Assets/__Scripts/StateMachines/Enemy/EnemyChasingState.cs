@@ -24,6 +24,7 @@ public class EnemyChasingState : EnemyBaseState
 
     public override void Tick(float deltaTime)
     {
+        
 
         if (!IsInChaseRange())
         {
