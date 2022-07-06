@@ -18,6 +18,8 @@ public class PlayerFreeLookState : PlayerBaseState
     public override void Enter()
     {
         _stateMachine.InputReader.OnTargetEvent += OnTarget;
+        _stateMachine.InputReader.OnJumpEvent += OnJump;
+
         _stateMachine.Anim.CrossFadeInFixedTime(FREE_LOOK_BLEND_TREE, CROSSfADE_TIME);
         
     }
@@ -48,6 +50,7 @@ public class PlayerFreeLookState : PlayerBaseState
     public override void Exit()
     {
         _stateMachine.InputReader.OnTargetEvent -= OnTarget;
+        _stateMachine.InputReader.OnJumpEvent -= OnJump;
 
     }
 
@@ -85,6 +88,10 @@ public class PlayerFreeLookState : PlayerBaseState
 
     }
 
+    private void OnJump()
+    {
+        _stateMachine.SwitchState(new PlayerJumpingState(_stateMachine));
+    }
 
-    
+
 }

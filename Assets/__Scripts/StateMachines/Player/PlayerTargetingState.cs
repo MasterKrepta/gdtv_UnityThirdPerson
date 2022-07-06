@@ -11,6 +11,8 @@ public class PlayerTargetingState : PlayerBaseState
 
     readonly int TARGETING_FWD_HASH = Animator.StringToHash("TargetingFwd");
     readonly int TARGETING_RIGHT_HASH = Animator.StringToHash("TargetingRight");
+
+    
     public PlayerTargetingState(PlayerStateMachine stateMachine) : base(stateMachine)
     {
 
@@ -19,6 +21,8 @@ public class PlayerTargetingState : PlayerBaseState
     public override void Enter()
     {
         _stateMachine.InputReader.OnCancelEvent += OnCancel;
+        _stateMachine.InputReader.OnDodgeEvent += OnDodge;
+        _stateMachine.InputReader.OnJumpEvent += OnJump;
         _stateMachine.Anim.CrossFadeInFixedTime(TARGETING_BLEND_TREE, CROSSfADE_TIME);
     }
     public override void Tick(float deltaTime)
@@ -40,7 +44,7 @@ public class PlayerTargetingState : PlayerBaseState
             _stateMachine.SwitchState(new PlayerBlockingState(_stateMachine));
             return;
         }
-        Vector3 movement = CalculateMovement();
+        Vector3 movement = CalculateMovement(deltaTime);
 
         Move(movement * _stateMachine.TargetingMoveSpeed, deltaTime);
 
@@ -54,6 +58,15 @@ public class PlayerTargetingState : PlayerBaseState
     public override void Exit()
     {
         _stateMachine.InputReader.OnCancelEvent -= OnCancel;
+        _stateMachine.InputReader.OnDodgeEvent -= OnDodge;
+        _stateMachine.InputReader.OnJumpEvent -= OnJump;
+    }
+
+    private void OnDodge()
+    {
+        if(_stateMachine.InputReader.MovementValue == Vector2.zero) { return; } // dont dodge if we are not moving
+
+        _stateMachine.SwitchState(new PlayerDodgingState(_stateMachine, _stateMachine.InputReader.MovementValue));
     }
 
     private void OnCancel()
@@ -62,12 +75,15 @@ public class PlayerTargetingState : PlayerBaseState
         _stateMachine.SwitchState(new PlayerFreeLookState(_stateMachine));
     }
 
-    private Vector3 CalculateMovement()
+    private Vector3 CalculateMovement(float deltaTime)
     {
         Vector3 movement = new Vector3();
 
-        movement += _stateMachine.transform.right * _stateMachine.InputReader.MovementValue.x;
-        movement += _stateMachine.transform.forward * _stateMachine.InputReader.MovementValue.y;
+
+            movement += _stateMachine.transform.right * _stateMachine.InputReader.MovementValue.x;
+            movement += _stateMachine.transform.forward * _stateMachine.InputReader.MovementValue.y;
+
+        
 
         return movement;
     }
@@ -99,4 +115,10 @@ public class PlayerTargetingState : PlayerBaseState
         _stateMachine.Anim.SetFloat(TARGETING_FWD_HASH, FwdVal, ANIM_DAMP_TIME, deltaTime);
         _stateMachine.Anim.SetFloat(TARGETING_RIGHT_HASH, RightVal, ANIM_DAMP_TIME, deltaTime);
     }
+
+    private void OnJump()
+    {
+        _stateMachine.SwitchState(new PlayerJumpingState(_stateMachine));
+    }
+
 }

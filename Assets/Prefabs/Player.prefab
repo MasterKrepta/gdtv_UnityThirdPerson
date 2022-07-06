@@ -1446,6 +1446,9 @@ MonoBehaviour:
   <Health>k__BackingField: {fileID: 0}
   <Ragdoll>k__BackingField: {fileID: 4461299240740350139}
   <AttackKnockback>k__BackingField: 0
+  <DodgeDuration>k__BackingField: 0
+  <DodgeLength>k__BackingField: 3
+  <JumpForce>k__BackingField: 4
 --- !u!95 &3295899781084230962
 Animator:
   serializedVersion: 4

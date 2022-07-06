@@ -18,6 +18,13 @@ public class PlayerStateMachine : StateMachine
     [field: SerializeField] public Health Health { get; private set; }
     [field: SerializeField] public Ragdoll   Ragdoll { get; private set; }
     [field: SerializeField] public float AttackKnockback { get; private set; }
+    [field: SerializeField] public float DodgeDuration { get; private set; }
+    [field: SerializeField] public float DodgeLength { get; private set; }
+
+    
+    [field: SerializeField] public float JumpForce { get; private set; }
+
+    public float PreviousDodgeTime { get; private set; } = Mathf.NegativeInfinity; // We need a starting point 
 
     public Transform MainCameraTransform { get; private set; }
 
