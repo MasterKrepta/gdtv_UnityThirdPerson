@@ -20,7 +20,7 @@ public class PlayerTargetingState : PlayerBaseState
 
     public override void Enter()
     {
-        _stateMachine.InputReader.OnCancelEvent += OnCancel;
+        _stateMachine.InputReader.OnTargetEvent += OnTarget;
         _stateMachine.InputReader.OnDodgeEvent += OnDodge;
         _stateMachine.InputReader.OnJumpEvent += OnJump;
         _stateMachine.Anim.CrossFadeInFixedTime(TARGETING_BLEND_TREE, CROSSfADE_TIME);
@@ -57,7 +57,7 @@ public class PlayerTargetingState : PlayerBaseState
 
     public override void Exit()
     {
-        _stateMachine.InputReader.OnCancelEvent -= OnCancel;
+        _stateMachine.InputReader.OnTargetEvent -= OnTarget;
         _stateMachine.InputReader.OnDodgeEvent -= OnDodge;
         _stateMachine.InputReader.OnJumpEvent -= OnJump;
     }
@@ -69,7 +69,7 @@ public class PlayerTargetingState : PlayerBaseState
         _stateMachine.SwitchState(new PlayerDodgingState(_stateMachine, _stateMachine.InputReader.MovementValue));
     }
 
-    private void OnCancel()
+    private void OnTarget()
     {
         _stateMachine.Targeter.Cancel();
         _stateMachine.SwitchState(new PlayerFreeLookState(_stateMachine));

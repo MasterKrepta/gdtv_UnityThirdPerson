@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,6 +16,7 @@ public class PlayerFallingState : PlayerBaseState
 
     public override void Enter()
     {
+        _stateMachine.LedgeDetector.OnLedgeDetect += HandleLedgeDetect;
         momentum = _stateMachine.Controller.velocity;
         momentum.y = 0f;
 
@@ -33,10 +35,11 @@ public class PlayerFallingState : PlayerBaseState
     }
     public override void Exit()
     {
-        
+        _stateMachine.LedgeDetector.OnLedgeDetect -= HandleLedgeDetect;
     }
 
-    
-
-    
+    private void HandleLedgeDetect(Vector3 ledgeFwd, Vector3 closestPoint)
+    {
+        _stateMachine.SwitchState(new PlayerHangingState(_stateMachine, ledgeFwd, closestPoint));
+    }
 }
