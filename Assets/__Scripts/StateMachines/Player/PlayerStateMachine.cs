@@ -17,6 +17,7 @@ public class PlayerStateMachine : StateMachine
     [field: SerializeField] public WeaponDamage WeaponDamage { get; private set; }
     [field: SerializeField] public Health Health { get; private set; }
     [field: SerializeField] public Ragdoll   Ragdoll { get; private set; }
+    [field: SerializeField] public LedgeDetector   LedgeDetector { get; private set; }
     [field: SerializeField] public float AttackKnockback { get; private set; }
     [field: SerializeField] public float DodgeDuration { get; private set; }
     [field: SerializeField] public float DodgeLength { get; private set; }
@@ -33,6 +34,10 @@ public class PlayerStateMachine : StateMachine
     // Start is called before the first frame update
     private void Start()
     {
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        
         MainCameraTransform = Camera.main.transform;
 
         SwitchState(new PlayerFreeLookState(this));

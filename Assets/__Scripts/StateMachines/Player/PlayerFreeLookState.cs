@@ -5,23 +5,36 @@ using UnityEngine;
 
 public class PlayerFreeLookState : PlayerBaseState
 {
-    readonly int FREE_LOOK_SPEED =  Animator.StringToHash("FreeLookSpeed");
+    readonly int FREE_LOOK_SPEED = Animator.StringToHash("FreeLookSpeed");
     const float ANIM_DAMP_TIME = 0.1f;
     const float CROSSfADE_TIME = 0.1f;
 
     readonly int FREE_LOOK_BLEND_TREE = Animator.StringToHash("FreeLookBlendTree");
-    
+    bool shouldFade;
 
 
-    public PlayerFreeLookState(PlayerStateMachine stateMachine) : base(stateMachine) {}
+    public PlayerFreeLookState(PlayerStateMachine stateMachine, bool shouldFade = true) : base(stateMachine)
+    {
+        this.shouldFade = shouldFade;
+    }
 
     public override void Enter()
     {
         _stateMachine.InputReader.OnTargetEvent += OnTarget;
         _stateMachine.InputReader.OnJumpEvent += OnJump;
 
-        _stateMachine.Anim.CrossFadeInFixedTime(FREE_LOOK_BLEND_TREE, CROSSfADE_TIME);
-        
+        _stateMachine.Anim.SetFloat(FREE_LOOK_SPEED, 0f);
+
+        if (shouldFade)
+        {
+            _stateMachine.Anim.CrossFadeInFixedTime(FREE_LOOK_BLEND_TREE, CROSSfADE_TIME);
+        }
+        else
+        {
+            _stateMachine.Anim.Play(FREE_LOOK_BLEND_TREE);
+        }
+
+
     }
     public override void Tick(float deltaTime)
     {
@@ -61,22 +74,22 @@ public class PlayerFreeLookState : PlayerBaseState
         _stateMachine.SwitchState(new PlayerTargetingState(_stateMachine));
     }
 
-    
+
 
     private void FaceMovementDirection(Vector3 movement, float deltaTime)
     {
-        _stateMachine.transform.rotation = Quaternion.Lerp(_stateMachine.transform.rotation, 
+        _stateMachine.transform.rotation = Quaternion.Lerp(_stateMachine.transform.rotation,
                                                             Quaternion.LookRotation(movement),
                                                             deltaTime * _stateMachine.RotationDamping);
     }
 
 
 
-  private Vector3 CalculateMovement()
+    private Vector3 CalculateMovement()
     {
         Vector3 fwd = _stateMachine.MainCameraTransform.forward;
         Vector3 right = _stateMachine.MainCameraTransform.right;
-        
+
         fwd.y = 0f;
         right.y = 0f;
 
